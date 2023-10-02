@@ -3,24 +3,26 @@ package proba;
 import java.util.Scanner;
 
 public class Proba {
+    static  String[] Ujlapok;
     public static void main(String[] args) {
-        String [] ujlap;
         String[] lapok = oszerak();
         kiir(lapok);
         for (int i = 0; i < 3; i++) {
             int oszlop = beolvas();
-            ujlap= kever(oszlop,lapok);
-            kiir(ujlap);
+            kever(oszlop,lapok);
+            kiir(Ujlapok);
         }
-        ezvolt(ujlap);
+        ezvolt(Ujlapok);
     }
 
     private static String[] kever(int oszlop,String[] lap) {
-        String[] Ujlapok = new pakli[lap.length];
+        Ujlapok = new paklik[lap.length];
         switch (oszlop) {
             case 1:
-                for (int i = 0; i < 10; i++) {
-                    
+                for (int i = 0; i < 7; i++) {
+                    Ujlapok[i]= lap[20-(i-1)*3];
+                    Ujlapok[i+7]= lap[19-(i-1)*3];
+                    Ujlapok[i+14]= lap[21-(i-1)*3];
                 }
                 break;
         }
@@ -46,13 +48,12 @@ public class Proba {
     }
 
     private static String[] oszerak() {
-        String[] lapok = new pakli[22];
-        String[] szinek = {"piros", "tők"};
+        String[] lapok = new paklik[22];
+        String[] szinek = {"piros", "tők","levél"};
         String[] minták = {"XIII", "IX", "X", "kiraly"};
         int j = 1;
         for (int i = 0; i < 22 && j < lapok.length; i++) {
             lapok[j++] = szinek[j] + "." + minták[i];
-
         }
         return lapok;
     }
